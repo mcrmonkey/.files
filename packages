@@ -1,0 +1,11 @@
+libnotify-bin
+libcanberra-gtk-module
+wget
+curl
+vim
+htop
+tmux
+git
+build-essential
+python-dev
+python-setuptools
