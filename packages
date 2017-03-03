@@ -9,3 +9,10 @@ git
 build-essential
 python-dev
 python-setuptools
+pwgen
+strace
+gnupg-curl
+pulseaudio-utils
+pasystray
+xcompmgr
+lxappearance

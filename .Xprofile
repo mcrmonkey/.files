@@ -1,0 +1,3 @@
+#!/bin/sh
+
+xcompmgr -f -n -c -D 3 &
