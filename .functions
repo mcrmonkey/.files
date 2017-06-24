@@ -1,0 +1,23 @@
+# put new password in pass then pass to mkpasswd
+
+pass_i_andmkpasswd() {
+	if [ -n "$1" ]; then
+		pass insert $1 && mkpasswd -m sha-512 $(pass $1);
+	else echo " entry name required eg: mkpass-ins customer/key";
+	fi;
+}
+
+
+# generate new rand pass
+
+pass_g_andmkpasswd() {
+	if [ -n "$1" ]; then
+		pass generate -n $1 20 && mkpasswd -m sha-512 $(pass $1);
+	else echo " Entryname required eg: mkpass-gen customer/key";
+	fi;
+}
+
+
+alias mkpass="mkpasswd -m sha-512"
+alias mkpass-ins="pass_i_andmkpasswd"
+alias mkpass-gen="pass_g_andmkpasswd"

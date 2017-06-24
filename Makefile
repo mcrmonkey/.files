@@ -1,17 +1,20 @@
-.PHONY: all packages bin dotfiles etc test shellcheck
+.PHONY: start all packages bin dotfiles etc
+
+start:
+	@echo "on hold - view Makefile and choose"
+
 
 all: packages bin dotfiles etc
 
 
 packages:
-	@echo "Packages - "
-	@echo "  - Updating"
+	@echo "[*] Updating Packages"
 	@sudo apt-get update -qq
-	@echo "  - Installing"
+	@echo "[*] Installing Packages"
 	@sudo apt-get install -qq $(shell cat $(CURDIR)/packages)
 
 bin:
-	@echo "Bin files - "
+	@echo "[*] Bin files"
 
 
 	# add aliases for things in bin
@@ -24,7 +27,7 @@ bin:
 
 dotfiles:
 
-	@echo ".files - "
+	@echo "[*] .files"
 
 
 	# add aliases for dotfiles
@@ -38,7 +41,7 @@ dotfiles:
 	@ln -fn $(CURDIR)/gitignore $(HOME)/.gitignore;
 
 etc:
-	@echo "etc files - "
+	@echo "[*] etc files"
 	@for file in $(shell find $(CURDIR)/etc -type f -not -name ".*.swp"); do \
 		f=$$(echo $$file | sed -e 's|$(CURDIR)||'); \
 		sudo ln -f $$file $$f; \
