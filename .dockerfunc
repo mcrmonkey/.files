@@ -31,3 +31,9 @@ gmail(){
         ${DOCKER_REPO_PREFIX}/mutt
     )
 }
+
+alias alpine='docker run -it --rm alpine /bin/sh'
+alias centos='docker run -it --rm centos:7 /bin/bash'
+alias debjess='docker run -it --rm debian:jessie /bin/bash'
+alias stretch='docker run -it --rm debian:stretch /bin/bash'
+
