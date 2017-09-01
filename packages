@@ -6,14 +6,15 @@ vim
 htop
 tmux
 git
+tig
 build-essential
 python-dev
 python-setuptools
 pwgen
 strace
-gnupg-curl
 pulseaudio-utils
 pasystray
 xcompmgr
 lxappearance
-pwgen
+gnupg2
+dirmngr

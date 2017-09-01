@@ -1,7 +1,7 @@
 .PHONY: start all packages bin dotfiles etc
 
 start:
-	@echo "on hold - view Makefile and choose"
+	@echo "Specify target: <all|packages|bin|dotfiles|etc>"
 
 
 all: packages bin dotfiles etc
@@ -23,14 +23,10 @@ bin:
 		sudo ln -sf $$file /usr/local/bin/$$f; \
 	done
 
-	@#sudo ln -sf $(CURDIR)/bin/browser-exec /usr/local/bin/xdg-open; \
-
 dotfiles:
 
 	@echo "[*] .files"
 
-
-	# add aliases for dotfiles
 	@for file in $(shell find $(CURDIR) -name ".*" -not -name ".gitignore" -not -name ".travis.yml" -not -name ".git" -not -name ".*.swp" -not -name ".travis.yml" -not -name ".irssi" -not -name ".gnupg"); do \
 		f=$$(basename $$file); \
 		ln -sfn $$file $(HOME)/$$f; \
