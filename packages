@@ -18,3 +18,11 @@ xcompmgr
 lxappearance
 gnupg2
 dirmngr
+whois
+dnsutils
+build-essential
+python-dev
+python-setuptools
+golang
+tree
+xclip
