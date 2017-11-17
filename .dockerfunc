@@ -4,6 +4,30 @@
 
 export DOCKER_REPO_PREFIX=mcrmonkey
 
+dcleanup(){
+    local containers
+    local volumes
+    local images
+
+    containers=( $(docker ps -aq 2>/dev/null) )
+    volumes=( $(docker ps --filter status=exited -q 2>/dev/null) )
+    images=( $(docker images --filter dangling=true -q 2>/dev/null) )
+
+    docker rm "${containers[@]}" 2>/dev/null
+    docker rm -v "${volumes[@]}" 2>/dev/null
+    docker rmi "${images[@]}" 2>/dev/null
+}
+
+
+
+lpass(){
+    docker run -it --rm \
+        -v ${HOME}/.lpass:/home/lpass/.lpass \
+        --name lpass \
+        ${DOCKER_REPO_PREFIX}/lpass "$@"
+}
+
+
 gcal(){
     docker run --rm -it \
         -v /etc/localtime:/etc/localtime:ro \
