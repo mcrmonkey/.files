@@ -1,0 +1,33 @@
+#!/bin/bash
+
+EXIFACE=${2:-DP-1-1}
+mainIFACE=${3:-eDP-1}
+
+
+case "$1" in
+        on)
+                xrandr --output $EXIFACE --auto
+                ;;
+        on-left)
+                xrandr --output $EXIFACE --auto --left-of $mainIFACE
+                ;;
+        on-right)
+                xrandr --output $EXIFACE --auto --right-of $mainIFACE
+                ;;
+        on-top)
+                xrandr --output $EXIFACE --auto --above $mainIFACE
+                ;;
+        on-bottom)
+                xrandr --output $EXIFACE --auto --below $mainIFACE
+                ;;
+        off)
+                xrandr --output $EXIFACE --off
+                ;;
+        status)
+                xrandr
+                ;;
+        *)
+                echo -ne "Usage:\n $0 <action> [externaldisplay] [maindisplay] \n on\t - on. ( obvs. )\n off\t - off.\n on[-left|-right|-above|-below]\t - on and at posistion \n status\t - xrandr output\n\n Defaults:\n External display: $EXIFACE \n Main display: $mainIFACE\n\n"
+                exit 1
+esac
+
