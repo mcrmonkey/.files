@@ -1,6 +1,6 @@
 #!/bin/bash
 
-EXIFACE=${2:-DP-1-1}
+EXIFACE=${2:-DP-1}
 mainIFACE=${3:-eDP-1}
 
 
@@ -27,7 +27,7 @@ case "$1" in
                 xrandr
                 ;;
         *)
-                echo -ne "Usage:\n $0 <action> [externaldisplay] [maindisplay] \n on\t - on. ( obvs. )\n off\t - off.\n on[-left|-right|-above|-below]\t - on and at posistion \n status\t - xrandr output\n\n Defaults:\n External display: $EXIFACE \n Main display: $mainIFACE\n\n"
+                echo -ne "Usage:\n $0 <action> [externaldisplay] [maindisplay] \n on\t - on. ( obvs. )\n off\t - off.\n on[-left|-right|-top|-bottom]\t - on and at posistion \n status\t - xrandr output\n\n Defaults:\n External display: $EXIFACE \n Main display: $mainIFACE\n\n"
                 exit 1
 esac
 
