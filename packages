@@ -1,5 +1,6 @@
 libnotify-bin
 libcanberra-gtk-module
+notify-osd
 wget
 curl
 vim
