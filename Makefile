@@ -1,7 +1,7 @@
 .PHONY: start all packages gopackages bin dotfiles etc
 
 start:
-	@echo "Specify target: <all|packages|bin|dotfiles|etc>"
+	@echo "Specify target: <all|packages|gopackages|bin|dotfiles|etc>"
 
 
 all: packages bin dotfiles etc gopackages

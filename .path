@@ -1,8 +1,4 @@
 # go path
 export GOPATH="${HOME}/.go"
-
-# update path
-#export PATH=/usr/local/bin:/usr/local/go/bin:${PATH}:${GOPATH}/bin:/usr/share/bcc/tools:/sbin
-
 export PATH=/usr/local/bin:/usr/bin:/bin:${GOPATH}/bin:${HOME}/.local/bin
 

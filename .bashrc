@@ -105,11 +105,5 @@ if [[ -f "${HOME}/.bash_profile" ]]; then
 	source "${HOME}/.bash_profile"
 fi
 
-
 source /home/ant/Tools/bash-my-gcp/loader.sh # bash-my-gcp
 
-## Stoppers
-
-# awsconsole
-# bashton-my-aws
-# bashton-sshuttle
