@@ -29,3 +29,5 @@ tree
 xclip
 i3lock
 dconf-editor
+ruby
+rake

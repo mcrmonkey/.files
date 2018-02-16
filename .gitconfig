@@ -13,3 +13,6 @@
 
 	amend = commit --amend --reuse-message=HEAD
 
+[commit]
+	gpgsign = true
+
