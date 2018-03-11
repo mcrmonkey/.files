@@ -24,7 +24,6 @@ dnsutils
 build-essential
 python-dev
 python-setuptools
-golang
 tree
 xclip
 i3lock

@@ -1,4 +1,4 @@
 # go path
 export GOPATH="${HOME}/.go"
-export PATH=/usr/local/bin:/usr/bin:/bin:${GOPATH}/bin:${HOME}/.local/bin
+export PATH=/usr/local/bin:/usr/bin:/bin:${GOPATH}/bin:${HOME}/.local/bin:/usr/local/go/bin
 

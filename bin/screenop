@@ -6,30 +6,30 @@ mainIFACE=${3:-eDP-1}
 
 case "$1" in
         on)
-			xrandr --output $EXIFACE --auto
+			xrandr --output "$EXIFACE" --auto
             ;;
         on-left)
-            xrandr --output $EXIFACE --auto --left-of $mainIFACE
+            xrandr --output "$EXIFACE" --auto --left-of "$mainIFACE"
             ;;
         on-right)
-            xrandr --output $EXIFACE --auto --right-of $mainIFACE
+            xrandr --output "$EXIFACE" --auto --right-of "$mainIFACE"
             ;;
         on-top)
-            xrandr --output $EXIFACE --auto --above $mainIFACE
+            xrandr --output "$EXIFACE" --auto --above "$mainIFACE"
             ;;
         on-bottom)
-            xrandr --output $EXIFACE --auto --below $mainIFACE
+            xrandr --output "$EXIFACE" --auto --below "$mainIFACE"
             ;;
         off)
-			xrandr --output $EXIFACE --off
+			xrandr --output "$EXIFACE" --off
 			;;
         status)
 			xrandr
 			;;
 		4kpowers)
 			xrandr --newmode "3840x2160_30.00" 338.75 3840 4080 4488 5136 2160 2163 2168 2200 -hsync +vsync
-			xrandr --addmode $EXIFACE "3840x2160_30.00"
-			xrandr --output $mainIFACE --auto --primary --output $EXIFACE --mode 3840x2160_30.00 --above $mainIFACE --rate 30
+			xrandr --addmode "$EXIFACE" "3840x2160_30.00"
+			xrandr --output "$mainIFACE" --auto --primary --output "$EXIFACE" --mode 3840x2160_30.00 --above "$mainIFACE" --rate 30
 			;;
         *)
                 echo -ne "Usage:\n $0 <action> [externaldisplay] [maindisplay] \n on\t - on. ( obvs. )\n off\t - off.\n on[-left|-right|-top|-bottom]\t - on and at posistion \n status\t - xrandr output\n 4kpowers\t - 3840x2160 on $EXIFACE\n\n Defaults:\n External display: $EXIFACE \n Main display: $mainIFACE\n\n"
