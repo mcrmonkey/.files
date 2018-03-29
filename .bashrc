@@ -105,5 +105,7 @@ if [[ -f "${HOME}/.bash_profile" ]]; then
 	source "${HOME}/.bash_profile"
 fi
 
+complete -C terraform terraform
+
 source /home/ant/Tools/bash-my-gcp/loader.sh # bash-my-gcp
 
