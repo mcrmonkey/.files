@@ -1,5 +1,6 @@
 .PHONY: help all packages gopackages bin dotfiles etc dotvim
 SHELL = /bin/bash
+.DEFAULT_GOAL = help
 
 help:
 	@echo -ne "\nTargets:\n\nall  \t\t- Everything below\n"
