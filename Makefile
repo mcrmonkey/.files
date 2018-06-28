@@ -1,4 +1,4 @@
-.PHONY: help all packages gopackages bin dotfiles etc dotvim
+.PHONY: help all packages gopackages bin dotfiles etc dotvim install_go gempackages
 SHELL = /bin/bash
 .DEFAULT_GOAL = help
 
@@ -7,7 +7,7 @@ help:
 	@egrep '^(.+)\:\ #\ (.+)' Makefile |column -t -c 2 -s ':#'
 	@echo ""
 
-all: packages bin dotfiles etc gopackages dotvim
+all: packages bin dotfiles etc install_go gopackages install_gem dotvim
 
 
 packages: # - Install packages
@@ -15,6 +15,11 @@ packages: # - Install packages
 	@sudo apt-get update -qq
 	@echo "[i] Installing Packages"
 	@sudo apt-get install -qq $(shell cat $(CURDIR)/packages)
+	
+gempackages: # - Install gem packages
+	@echo "[i] Installing Gem Packages"
+	@sudo gem install $(shell cat $(CURDIR)/packages.gems)	
+
 
 install_go: # - Install go
 	@$(CURDIR)/bin/install_golang.sh
@@ -54,5 +59,5 @@ etc: # - Install etc files
 
 dotvim: # - Clone .vim from github
 	@echo "[i] Cloning remote vim"
-	@git clone https://github.com/mcrmonkey/.vim ~/.vim
+	@git clone --recursive https://github.com/mcrmonkey/.vim ~/.vim
 
