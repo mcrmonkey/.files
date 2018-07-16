@@ -8,9 +8,15 @@ case $- in
       *) return;;
 esac
 
+# Case-insensitive globbing (used in pathname expansion)
+#shopt -s nocaseglob
+
+# Autocorrect typos in path names when using `cd`
+shopt -s cdspell
+
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
-HISTCONTROL=ignoreboth
+# HISTCONTROL=ignoreboth
 
 # append to the history file, don't overwrite it
 shopt -s histappend
@@ -98,12 +104,20 @@ if ! shopt -oq posix; then
   fi
 fi
 
-
-if [[ -f "${HOME}/.bash_profile" ]]; then
-	source "${HOME}/.bash_profile"
-fi
+# Load the shell dotfiles, and then some:
+# * ~/.path can be used to extend `$PATH`.
+# * ~/.extra can be used for other settings you dont want to commit.
+for file in ~/.{aliases,functions,path,dockerfunc,extra,exports}; do
+	if [[ -r "$file" ]] && [[ -f "$file" ]]; then
+		# shellcheck source=/dev/null
+		source "$file"
+	fi
+done
+unset file
 
 complete -C terraform terraform
 
 source /home/ant/Tools/bash-my-gcp/loader.sh # bash-my-gcp
+
+
 
