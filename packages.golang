@@ -1,3 +1,3 @@
 github.com/cloudflare/cfssl/cmd/...
 github.com/cbednarski/hostess/cmd/hostess
-github.com/gopasswd/gopass
+github.com/gopasspw/gopass
