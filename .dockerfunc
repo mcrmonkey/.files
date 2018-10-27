@@ -16,9 +16,13 @@ dcleanup(){
     docker rm "${containers[@]}" 2>/dev/null
     docker rm -v "${volumes[@]}" 2>/dev/null
     docker rmi "${images[@]}" 2>/dev/null
+    
+    docker system prune -f --volumes
 }
 
-
+dockertop() {
+    docker stats --format "table {{.Container}}\t{{.Name}}\t{{.CPUPerc}}  {{.MemPerc}}\t{{.NetIO}}\t{{.BlockIO}}"
+}
 
 lpass(){
     docker run -it --rm \
@@ -60,4 +64,5 @@ alias alpine='docker run -it --rm alpine /bin/sh'
 alias centos='docker run -it --rm centos:7 /bin/bash'
 alias debjess='docker run -it --rm debian:jessie /bin/bash'
 alias stretch='docker run -it --rm debian:stretch /bin/bash'
+alias buster='docker run -it --rm debian:buster /bin/bash'
 
