@@ -13,6 +13,12 @@
 
 	amend = commit --amend --reuse-message=HEAD
 
+        # PR from github
+	pr = "!git fetch origin pull/$1/head:pr$1"
+	
+	# MR from gitlab 
+	mr = "!git fetch origin merge-request/$1/head:mr-$1"
+
 [commit]
 	gpgsign = true
 
