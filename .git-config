@@ -17,7 +17,7 @@
 	pr = "!git fetch origin pull/$1/head:pr$1"
 	
 	# MR from gitlab 
-	mr = "!git fetch origin merge-request/$1/head:mr-$1"
+	mr = "!git fetch origin merge-requests/$1/head:mr-$1"
 
 [commit]
 	gpgsign = true
