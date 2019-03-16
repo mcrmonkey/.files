@@ -15,8 +15,8 @@
 
         # PR from github
 	pr = "!git fetch origin pull/$1/head:pr$1"
-	
-	# MR from gitlab 
+
+	# MR from gitlab
 	mr = !sh -c 'git fetch origin merge-requests/$1/head:mr-$1' -
 
 [commit]
