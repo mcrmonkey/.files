@@ -23,6 +23,13 @@
 	# MR from gitlab
 	mr = !sh -c 'git fetch origin merge-requests/$1/head:mr-$1' -
 
+[apply]
+	whitespace = fix
+
 [commit]
 	gpgsign = true
+
+[help]
+	autocorrect = 1
+
 

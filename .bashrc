@@ -117,7 +117,6 @@ unset file
 
 complete -C terraform terraform
 
-source /home/ant/Tools/bash-my-gcp/loader.sh # bash-my-gcp
 
 
 
