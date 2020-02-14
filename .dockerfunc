@@ -20,6 +20,18 @@ dcleanup(){
     docker system prune -f --volumes
 }
 
+divetool() {
+	docker run --rm -it \
+		-v /usr/bin/docker:/bin/docker:ro \
+		-v /var/run/docker.sock:/var/run/docker.sock \
+		-v "$HOME/.dive.yaml":"$HOME/.dive.yaml" \
+		-v "$(pwd)":"$(pwd)" \
+		-w "$(pwd)" \
+		wagoodman/dive:latest ${@}
+}
+
+
+
 dockertop() {
     docker stats --format "table {{.Container}}\t{{.Name}}\t{{.CPUPerc}}  {{.MemPerc}}\t{{.NetIO}}\t{{.BlockIO}}"
 }

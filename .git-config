@@ -1,5 +1,6 @@
 [core]
 	editor = vim
+    quotepath = false
 
 [pull]
 	rebase = true
@@ -32,4 +33,15 @@
 [help]
 	autocorrect = 1
 
+[protocol]
+	version = 2
+
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+
+[color]
+	ui = auto
 
