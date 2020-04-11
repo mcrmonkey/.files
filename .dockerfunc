@@ -36,45 +36,11 @@ dockertop() {
     docker stats --format "table {{.Container}}\t{{.Name}}\t{{.CPUPerc}}  {{.MemPerc}}\t{{.NetIO}}\t{{.BlockIO}}"
 }
 
-lpass(){
-    docker run -it --rm \
-        -v ${HOME}/.lpass:/home/lpass/.lpass \
-        --name lpass \
-        ${DOCKER_REPO_PREFIX}/lpass "$@"
-}
-
-
-gcal(){
-    docker run --rm -it \
-        -v /etc/localtime:/etc/localtime:ro \
-        -v "${HOME}/.gcalcli:/home/gcal" \
-        --name gcal \
-        ${DOCKER_REPO_PREFIX}/gcal "$@"
-}
-
-gmail(){
-    (
-    export IMAP_SERVER
-    export SMTP_SERVER
-
-    docker run -it --rm \
-        -e GMAIL \
-        -e GMAIL_NAME \
-        -e GMAIL_PASS \
-        -e GMAIL_FROM \
-        -e GPG_ID \
-        -e IMAP_SERVER \
-        -e SMTP_SERVER \
-        -v "${HOME}/.gnupg:/home/user/.gnupg:ro" \
-        -v /etc/localtime:/etc/localtime:ro \
-        --name "mutt" \
-        ${DOCKER_REPO_PREFIX}/mutt
-    )
-}
 
 alias alpine='docker run -it --rm alpine /bin/sh'
 alias centos='docker run -it --rm centos:7 /bin/bash'
 alias debjess='docker run -it --rm debian:jessie /bin/bash'
 alias stretch='docker run -it --rm debian:stretch /bin/bash'
 alias buster='docker run -it --rm debian:buster /bin/bash'
+alias bullseye='docker run -it --rm debian:bullseye /bin/bash'
 

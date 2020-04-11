@@ -10,6 +10,8 @@ alias afk="i3lock -c#000000"
 
 alias dl='curl --silent -w "DNS:\t\t%{time_namelookup}\nConnect:\t%{time_connect}\nPretransfer:\t%{time_pretransfer}\nRedirect:\t%{time_redirect}\nStart Transfer: %{time_starttransfer}\n────────────────────\nTotal:\t\t%{time_total}\n" --output /dev/null'
 
+alias mkpass="mkpasswd -m sha-512"
+
 ## kube
 alias k=kubectl
 complete -F __start_kubectl k

@@ -1,0 +1,6 @@
+#!/bin/sh
+
+docker run -it --rm \
+  -v ${HOME}/.lpass:/home/lpass/.lpass \
+  --name lpass \
+  ${DOCKER_REPO_PREFIX}/lpass "$@"
