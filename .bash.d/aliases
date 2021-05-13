@@ -12,6 +12,8 @@ alias dl='curl --silent -w "DNS:\t\t%{time_namelookup}\nConnect:\t%{time_connect
 
 alias mkpass="mkpasswd -m sha-512"
 
+alias tmp='cd $(mktemp -d)'
+
 ## kube
 alias k=kubectl
 complete -F __start_kubectl k
