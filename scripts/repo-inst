@@ -42,7 +42,7 @@ case "$1" in
 		echo "spotify-client: done but may need some weird dep"
 		;;
 	virtualbox)
-		echo "deb http://download.virtualbox.org/virtualbox/debian stretch contrib" > /etc/apt/sources.list.d/virtualbox.list
+		echo "deb [arch=amd64] https://download.virtualbox.org/virtualbox/debian $(lsb_release -cs) contrib" > /etc/apt/sources.list.d/virtualbox.list
 		curl https://www.virtualbox.org/download/oracle_vbox_2016.asc |apt-key add -
 		;;
 	*)
