@@ -1,0 +1,52 @@
+#!/bin/bash
+
+gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-1 "['<Shift><Super>exclam']"
+gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-2 "['<Shift><Super>quotedbl']"
+gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-3 "['<Shift><Super>sterling']"
+gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-4 "['<Shift><Super>dollar']"
+gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-5 "['<Shift><Super>percent']"
+gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-6 "['<Shift><Super>asciicircum']"
+gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-7 "['<Shift><Super>ampersand']"
+gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-8 "['<Shift><Super>asterisk']"
+gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-9 "['<Shift><Super>parenleft']"
+
+for I in {1..9}; do gsettings set "org.gnome.desktop.wm.keybindings" "switch-to-workspace-${I}" "['<Super>${I}']"; done
+
+for I in {1..9}; do gsettings set "org.gnome.shell.keybindings" "switch-to-application-${I}" "[]"; done
+
+gsettings set org.gnome.desktop.wm.preferences num-workspaces "9"
+gsettings set org.gnome.mutter dynamic-workspaces 'false'
+
+gsettings set org.gnome.desktop.screensaver user-switch-enabled 'false'
+gsettings set org.gnome.desktop.screensaver show-full-name-in-top-bar 'false'
+gsettings set org.gnome.desktop.search-providers disable-external 'true'
+
+
+gsettings set org.gnome.desktop.media-handling automount 'false'
+gsettings set org.gnome.desktop.media-handling automount-open 'false'
+gsettings set org.gnome.desktop.media-handling autorun-never 'true'
+gsettings set org.gnome.desktop.media-handling autorun-x-content-ignore "['x-content/audio-cdda', 'x-content/video-dvd', 'x-content/audio-player', 'x-content/image-dcf', 'x-content/unix-software']"
+
+gsettings set org.gnome.desktop.calendar show-weekdate 'true'
+
+gsettings set org.gnome.desktop.interface clock-show-weekday 'true'
+gsettings set org.gnome.desktop.interface enable-animations 'false'
+gsettings set org.gnome.desktop.interface show-battery-percentage 'true'
+gsettings set org.gnome.desktop.interface scaling-factor 1
+gsettings set org.gnome.desktop.interface enable-hot-corners 'false'
+gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita-dark'
+
+gsettings set org.gnome.desktop.screensaver lock-delay '0'
+
+gsettings set org.gnome.settings-daemon.plugins.media-keys custom-keybindings "['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/']"
+
+gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ binding '<Super>Return'
+gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ command '/usr/bin/gnome-terminal'
+gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ name 'terminal'
+gsettings set org.gnome.settings-daemon.plugins.power ambient-enabled 'false'
+gsettings set org.gnome.settings-daemon.plugins.power power-button-action 'nothing'
+
+gsettings set org.gnome.shell favorite-apps "[]"
+
+gsettings set org.gnome.clocks world-clocks "[{'location': <(uint32 2, <('Manchester', 'EGCC', true, [(0.93113315593897483, -0.03985167876943968)], [(0.93375114981696627, -0.038688137570305148)])>)>}]"
+gsettings set org.gnome.Weather location "[<(uint32 2, <('Manchester', 'EGCC', true, [(0.93113315593897483, -0.03985167876943968)], [(0.93375114981696627, -0.038688137570305148)])>)>]"

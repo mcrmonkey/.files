@@ -1,4 +1,4 @@
-.PHONY: help all packages gopackages bin dotfiles etc dotvim install_go gempackages
+.PHONY: help all packages gopackages bin dotfiles etc dotvim install_go gempackages gnome-settings
 SHELL = /bin/bash
 .DEFAULT_GOAL = help
 
@@ -37,7 +37,7 @@ bin: ## - Install bin files
 dotfiles: ## - Install .files
 	@echo "[i] .files"
 
-	@for file in $(shell find $(CURDIR) -name ".*" -not -name ".gitignore" -not -name ".git" -not -name ".*.swp" -not -name ".irssi" -not -name ".gnupg"); do \
+	@for file in $(shell find $(CURDIR) -name ".*" -not -name ".gitignore" -not -name ".git" -not -name ".*.swp" -not -name ".gnupg"); do \
 		f=$$(basename $$file); \
 		ln -sfn $$file $(HOME)/$$f; \
 	done;
@@ -50,3 +50,6 @@ dotvim: ## - Clone .vim from github
 	@echo "[i] Cloning remote vim"
 	@git clone --recursive https://github.com/mcrmonkey/.vim ~/.vim
 
+gnome-settings: ## - Apply Gnome settings
+	@echo "[i] Applying gnome settings"
+	@./gsettings
