@@ -39,8 +39,7 @@ dockertop() {
 
 alias alpine='docker run -it --rm alpine /bin/sh'
 alias centos='docker run -it --rm centos:7 /bin/bash'
-alias debjess='docker run -it --rm debian:jessie /bin/bash'
-alias stretch='docker run -it --rm debian:stretch /bin/bash'
 alias buster='docker run -it --rm debian:buster /bin/bash'
 alias bullseye='docker run -it --rm debian:bullseye /bin/bash'
+alias bookworm='docker run -it --rm debian:bookworm /bin/bash'
 
