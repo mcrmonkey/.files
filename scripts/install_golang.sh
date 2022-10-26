@@ -25,9 +25,9 @@ curl -sSL "https://storage.googleapis.com/golang/go${GO_VERSION}.linux-amd64.tar
 set +e
 set -x
 
-go get github.com/cloudflare/cfssl/cmd/...
-go get github.com/cbednarski/hostess
-GO111MODULE=on go get github.com/gopasspw/gopass@v1.10.1
-go get github.com/genuinetools/weather
+go install github.com/cloudflare/cfssl/cmd/...@latest
+go install github.com/cbednarski/hostess@latest
+go install github.com/gopasspw/gopass@v1.14.9
+go install github.com/genuinetools/weather@latest
 
 )
