@@ -18,32 +18,37 @@ show_usage() {
 	echo -e "spotify\t\t- Spotify client"
 }
 
+help-pkgs() {
+    apt-get install -qq apt-transport-https ca-certificates curl gnupg2 software-properties-common
+}
 
 case "$1" in
 	gcp)
 		# Add the Cloud SDK distribution URI as a package source
 		echo "deb https://packages.cloud.google.com/apt cloud-sdk main" > /etc/apt/sources.list.d/google-cloud-sdk.list
 		# Import the Google Cloud Platform public key
-		curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
+		curl https://packages.cloud.google.com/apt/doc/apt-key.gpg --output /etc/apt/trusted.gpg.d/google-cloud-sdk.gpg
 		;;
 	gchrome)
+		help-pkgs
 		echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google-chrome.list
-		curl https://dl.google.com/linux/linux_signing_key.pub | apt-key add -
+		curl https://dl.google.com/linux/linux_signing_key.pub |gpg --dearmor > /etc/apt/trusted.gpg.d/google-chrome.gpg
 		;;
 	docker)
-		echo "docker"
-		apt-get install apt-transport-https ca-certificates curl gnupg2 software-properties-common
-		curl -fsSL https://download.docker.com/linux/$(. /etc/os-release; echo "$ID")/gpg | apt-key add -
+		help-pkgs
+		curl -fsSL https://download.docker.com/linux/$(. /etc/os-release; echo "$ID")/gpg |gpg --dearmor > /etc/apt/trusted.gpg.d/docker.gpg
 		echo "deb [arch=amd64] https://download.docker.com/linux/$(. /etc/os-release; echo "$ID") $(lsb_release -cs) stable" > /etc/apt/sources.list.d/docker.list
 		;;
 	spotify)
+		help-pkgs
 		echo "deb http://repository.spotify.com stable non-free" > /etc/apt/sources.list.d/spotify.list
-		apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 8FD3D9A8D3800305A9FFF259D1742AD60D811D58
+		curl -sS https://download.spotify.com/debian/pubkey_5E3C45D7B312C643.gpg |gpg --dearmor > /etc/apt/trusted.gpg.d/spotify.gpg
 		echo "spotify-client: done but may need some weird dep"
 		;;
 	virtualbox)
+		help-pkgs
 		echo "deb [arch=amd64] https://download.virtualbox.org/virtualbox/debian $(lsb_release -cs) contrib" > /etc/apt/sources.list.d/virtualbox.list
-		curl https://www.virtualbox.org/download/oracle_vbox_2016.asc |apt-key add -
+		curl https://www.virtualbox.org/download/oracle_vbox_2016.asc |gpg --dearmor > /etc/apt/trusted.gpg.d/virtualbox.gpg
 		;;
 	*)
 		show_usage
