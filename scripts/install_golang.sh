@@ -28,6 +28,5 @@ set -x
 go install github.com/cloudflare/cfssl/cmd/...@latest
 go install github.com/cbednarski/hostess@latest
 go install github.com/gopasspw/gopass@v1.14.9
-go install github.com/genuinetools/weather@latest
 
 )
