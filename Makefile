@@ -53,3 +53,10 @@ dotvim: ## - Clone .vim from github
 gnome-settings: ## - Apply Gnome settings
 	@echo "[i] Applying gnome settings"
 	@./gsettings
+
+app-shortcuts: ## - Install .desktop shortcuts
+	@echo "[i] Installing .desktop shortcuts"
+	@for file in $(shell find $(CURDIR)/apps -type f); do \
+		f=$$(basename $$file); \
+		ln -sfn $$file $(HOME)/.local/share/applications/$$f; \
+		done
