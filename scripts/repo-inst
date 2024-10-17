@@ -5,8 +5,6 @@ if [ "${UID}" -ne 0 ]; then
 	exit 1
 fi
 
-
-
 show_usage() {
 	echo -ne "\nRepo installer\n"
 	echo -e "$0 <repo to setup>"
@@ -17,6 +15,7 @@ show_usage() {
 	echo -e "virtualbox\t- Virtualbox"
 	echo -e "spotify\t\t- Spotify client"
 	echo -e "hashicorp\t- Hashicorp repository"
+	echo -e "kubectl\t\t- Kubernetes client repository"
 }
 
 help-pkgs() {
@@ -28,7 +27,8 @@ case "$1" in
 		# Add the Cloud SDK distribution URI as a package source
 		echo "deb https://packages.cloud.google.com/apt cloud-sdk main" > /etc/apt/sources.list.d/google-cloud-sdk.list
 		# Import the Google Cloud Platform public key
-		curl https://packages.cloud.google.com/apt/doc/apt-key.gpg --output /etc/apt/trusted.gpg.d/google-cloud-sdk.gpg
+		curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | gpg --dearmor > /etc/apt/trusted.gpg.d/google-cloud-sdk.gpg
+
 		;;
 	gchrome)
 		help-pkgs
@@ -43,7 +43,7 @@ case "$1" in
 	spotify)
 		help-pkgs
 		echo "deb http://repository.spotify.com stable non-free" > /etc/apt/sources.list.d/spotify.list
-		curl -sS https://download.spotify.com/debian/pubkey_5E3C45D7B312C643.gpg |gpg --dearmor > /etc/apt/trusted.gpg.d/spotify.gpg
+		curl -sS https://download.spotify.com/debian/pubkey_6224F9941A8AA6D1.gpg |gpg --dearmor > /etc/apt/trusted.gpg.d/spotify.gpg
 		echo "spotify-client: done but may need some weird dep"
 		;;
 	virtualbox)
@@ -55,6 +55,12 @@ case "$1" in
 		help-pkgs
 		echo "deb https://apt.releases.hashicorp.com $(lsb_release -cs) main" > /etc/apt/sources.list.d/hashicorp.list
 		curl -sS https://apt.releases.hashicorp.com/gpg | gpg --dearmor > /etc/apt/trusted.gpg.d/hashicorp.gpg
+		;;
+
+	kubectl)
+		help-pkgs
+		curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.31/deb/Release.key | gpg --dearmor > /etc/apt/keyrings/kubernetes-apt-keyring.gpg
+		echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.31/deb/ /' > /etc/apt/sources.list.d/kubernetes.list
 		;;
 	*)
 		show_usage
