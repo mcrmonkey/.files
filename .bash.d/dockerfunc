@@ -1,7 +1,6 @@
 #!/bin/bash
 # Docker funcs
 
-
 export DOCKER_REPO_PREFIX=mcrmonkey
 
 dcleanup(){
@@ -30,16 +29,16 @@ divetool() {
 		wagoodman/dive:latest ${@}
 }
 
-
-
 dockertop() {
     docker stats --format "table {{.Container}}\t{{.Name}}\t{{.CPUPerc}}  {{.MemPerc}}\t{{.NetIO}}\t{{.BlockIO}}"
 }
 
+dockerquick() {
+    if [ -n "${1}" ]; then IMAGE="${1}"; shift 1; docker run -it --rm "${@}" "${IMAGE}"; else echo "[!] Specify Container Image"; exit 1; fi
+}
 
-alias alpine='docker run -it --rm alpine /bin/sh'
-alias centos='docker run -it --rm centos:7 /bin/bash'
-alias buster='docker run -it --rm debian:buster /bin/bash'
-alias bullseye='docker run -it --rm debian:bullseye /bin/bash'
-alias bookworm='docker run -it --rm debian:bookworm /bin/bash'
-
+alias alpine='dockerquick alpine'
+alias centos='dockerquick centos:7'
+alias buster='dockerquick debian:buster'
+alias bullseye='dockerquick debian:bullseye'
+alias bookworm='dockerquick debian:bookworm'
